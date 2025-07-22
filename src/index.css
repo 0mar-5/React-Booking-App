@@ -1,1 +1,9 @@
 @import "tailwindcss";
+
+body {
+  background-color: #f2f5f8;
+}
+.container-custom {
+  width: 100%;
+  padding: 0 2rem;
+}
