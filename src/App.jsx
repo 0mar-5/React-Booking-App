@@ -1,13 +1,25 @@
 import Navbar from "./components/Navbar/Navbar";
-import Home from "./pages/Home";
+import { Suspense } from "react";
+import { BrowserRouter } from "react-router-dom";
+import AppRoutes from "./routes/AppRoutes";
 
 function App() {
   return (
     <>
-      <Navbar />
-      <div className="container-custom mb-36">
-        <Home />
-      </div>
+      <BrowserRouter>
+        <Navbar />
+        <div className="mb-36 ">
+          <Suspense
+            fallback={
+              <div style={{ textAlign: "center", marginTop: "50px" }}>
+                Loading...
+              </div>
+            }
+          >
+            <AppRoutes />
+          </Suspense>
+        </div>
+      </BrowserRouter>
     </>
   );
 }

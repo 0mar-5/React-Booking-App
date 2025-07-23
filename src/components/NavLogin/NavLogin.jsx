@@ -1,16 +1,18 @@
+import { NavLink } from "react-router-dom";
+
 function NavLogin() {
   return (
     <div>
       <ul className="flex gap-3">
         <li>
-          <a href="#" className="text-white text-lg">
+          <NavLink to="/login" className="text-white text-lg">
             Login
-          </a>
+          </NavLink>
         </li>
         <li>
-          <a href="#" className="text-white text-lg">
+          <NavLink to="/signup" className="text-white text-lg">
             Sign up
-          </a>
+          </NavLink>
         </li>
       </ul>
     </div>

@@ -8,12 +8,25 @@ import NavItem from "../navItem/NavItem";
 function MainNav() {
   return (
     <ul className="flex justify-center items-center gap-6 absolute top-[63%] right-[45%] [justify-self:anchor-center] pl-[2rem]">
-      <NavItem title="hotel" icon={<MdHotel size={24} color="white" />} />
-      <NavItem title="villa" icon={<IoHomeSharp size={24} color="white" />} />
-      <NavItem title="taxi" icon={<MdLocalTaxi size={24} color="white" />} />
+      <NavItem
+        title="hotel"
+        icon={<MdHotel size={24} color="white" />}
+        to="/"
+      />
+      <NavItem
+        title="villa"
+        icon={<IoHomeSharp size={24} color="white" />}
+        to="/"
+      />
+      <NavItem
+        title="taxi"
+        icon={<MdLocalTaxi size={24} color="white" />}
+        to="/signup"
+      />
       <NavItem
         title="flights"
         icon={<GiAirplaneDeparture size={24} color="white" />}
+        to="/login"
       />
     </ul>
   );
