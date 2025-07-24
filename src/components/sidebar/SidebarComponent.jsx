@@ -17,7 +17,7 @@ function SidebarComponent() {
 
   return (
     <aside
-      className={`h-[650px] z-10 flex flex-col justify-between transition-all duration-600 ease-in-out rounded-lg pb-3
+      className={`absolute h-[650px] z-10 flex flex-col justify-between transition-all duration-600 ease-in-out rounded-lg pb-3
  ${collapsed ? "w-16" : "w-56"} text-white
       bg-gradient-to-b from-[#0A69DA] via-[#0856C8] to-[#0231A5]`}
     >

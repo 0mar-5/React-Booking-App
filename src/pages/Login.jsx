@@ -1,5 +1,119 @@
+import { useForm } from "react-hook-form";
+import { Link, useNavigate } from "react-router-dom";
+import toast, { Toaster } from "react-hot-toast";
+import FormInput from "../components/FormInput/FormInput";
+
 function Login() {
-  return <div className="pt-10">login</div>;
+  const {
+    register,
+    handleSubmit,
+    formState: { errors },
+  } = useForm({ mode: "onBlur" });
+  const navigate = useNavigate();
+
+  function onSubmit(data) {
+    console.log("submit", data);
+    const users = JSON.parse(localStorage.getItem("users")) || [];
+
+    const matchedUser = users.find(
+      (user) => user.email === data.email && user.password === data.password
+    );
+
+    if (matchedUser) {
+      // setIsLoggedIn(true);
+
+      // const userCart = matchedUser.cartItems || [];
+      // setCartItems(userCart);
+
+      const updatedUser = {
+        ...matchedUser,
+        isLoggedIn: true,
+      };
+
+      localStorage.setItem("userData", JSON.stringify(updatedUser));
+
+      const updatedUsers = users.map((u) =>
+        u.email === matchedUser.email ? updatedUser : u
+      );
+      localStorage.setItem("users", JSON.stringify(updatedUsers));
+
+      toast.success("Login successful!");
+      navigate("/");
+    } else {
+      toast.error("Invalid email or password");
+    }
+  }
+
+  return (
+    <>
+      <div className="min-h-screen flex items-center justify-center  py-12 px-4 sm:px-6 lg:px-8">
+        <Toaster position="top-center" reverseOrder={false} />
+
+        <div className="max-w-4xl w-full space-y-8 bg-white  shadow-lg flex flex-col md:flex-row">
+          <div className="w-full md:w-1/2 p-8 order-1 md:order-1">
+            <div className="flex flex-col items-center gap-16">
+              <img src="./logo.png" alt="logo" className="w-[50%]" />
+              <h2 className="text-3xl font-extrabold text-gray-900 text-center">
+                Login
+              </h2>
+            </div>
+
+            <form onSubmit={handleSubmit(onSubmit)} className="mt-8 space-y-6">
+              <div className="space-y-4">
+                <FormInput
+                  label="email"
+                  id="email"
+                  type="email"
+                  name="email"
+                  register={register}
+                  rules={{ required: "Email is required" }}
+                  error={errors.email}
+                />
+
+                <FormInput
+                  label="Password"
+                  id="password"
+                  type="password"
+                  name="password"
+                  register={register}
+                  rules={{ required: "Password is required" }}
+                  error={errors.password}
+                />
+              </div>
+
+              <div>
+                <button
+                  type="submit"
+                  className="w-full cursor-pointer flex justify-center py-2 px-4 border border-transparent rounded-md shadow-sm text-sm font-medium text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500"
+                >
+                  Sign in
+                </button>
+              </div>
+            </form>
+
+            <div className="mt-6 text-center text-sm">
+              <p className="text-gray-600">
+                Don't have an account?
+                <Link
+                  to="/signup"
+                  className="font-medium text-indigo-600 hover:text-indigo-500"
+                >
+                  Register here
+                </Link>
+              </p>
+            </div>
+          </div>
+
+          {/* Image container */}
+          <div className="w-full md:w-1/2 bg-gray-200  order-2 md:order-2">
+            <div className="h-full w-full flex items-center justify-center text-gray-500">
+              <img src="./BG.png" alt="airplan image" />
+            </div>
+          </div>
+        </div>
+      </div>
+    </>
+  );
 }
 
 export default Login;

@@ -2,7 +2,7 @@ import { NavLink } from "react-router-dom";
 
 function NavLogin() {
   return (
-    <div>
+    <div className="ml-auto">
       <ul className="flex gap-3">
         <li>
           <NavLink to="/login" className="text-white text-lg">

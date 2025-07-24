@@ -8,7 +8,7 @@ function App() {
     <>
       <BrowserRouter>
         <Navbar />
-        <div className="mb-36 ">
+        <div className="page__container mb-36 pt-[6%] ">
           <Suspense
             fallback={
               <div style={{ textAlign: "center", marginTop: "50px" }}>
