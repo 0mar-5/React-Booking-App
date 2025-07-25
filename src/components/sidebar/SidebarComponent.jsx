@@ -3,7 +3,7 @@ import { BiSolidHome, BiMenuAltRight, BiMenuAltLeft } from "react-icons/bi";
 import { RiContactsBook3Fill } from "react-icons/ri";
 import { FaEarthAmericas } from "react-icons/fa6";
 import { BsQuestionSquareFill } from "react-icons/bs";
-import { NavLink } from "react-router-dom";
+import { Link, NavLink } from "react-router-dom";
 
 function SidebarComponent() {
   const [collapsed, setCollapsed] = useState(true);
@@ -56,11 +56,11 @@ function SidebarComponent() {
       </nav>
 
       {!collapsed && (
-        <div className="p-3">
+        <Link to="/signup" className="p-3">
           <button className="w-full bg-white text-blue-800 font-semibold py-2 rounded-3xl hover:bg-gray-100">
             Sign Up Now
           </button>
-        </div>
+        </Link>
       )}
     </aside>
   );
