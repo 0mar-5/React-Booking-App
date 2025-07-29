@@ -1,4 +1,4 @@
-function SearchBar() {
+function SearchBar({ collapsed }) {
   return (
     <div
       className="
@@ -7,7 +7,7 @@ function SearchBar() {
         items-center gap-4
         bg-white shadow-md rounded-lg
         px-4 py-3
-        w-[90%] sm:w-[80%] md:w-[70%] lg:w-[60%] xl:max-w-4xl
+        w-[90%] sm:w-[80%] md:w-[70%] lg:w-[60%] xl:max-w-5xl
       "
     >
       {/* Search */}
@@ -17,7 +17,7 @@ function SearchBar() {
         </label>
         <input
           type="text"
-          placeholder="Hotel Haramain"
+          placeholder="Hotel"
           className="mt-1 bg-gray-100 rounded-lg px-4 py-2 text-gray-800 text-sm font-semibold focus:outline-none focus:ring-2 focus:ring-blue-500 w-full"
         />
       </div>
@@ -29,8 +29,9 @@ function SearchBar() {
         </label>
         <select className="mt-1 bg-gray-100 rounded-lg px-4 py-2 text-gray-800 text-sm font-semibold focus:outline-none focus:ring-2 focus:ring-blue-500 w-full">
           <option>Egypt</option>
-          <option>Saudi Arabia</option>
-          <option>UAE</option>
+          <option>Morocco</option>
+          <option>Greece</option>
+          <option>United States</option>
         </select>
       </div>
 
@@ -44,6 +45,18 @@ function SearchBar() {
           className="mt-1 bg-gray-100 rounded-lg px-4 py-2 text-gray-800 text-sm font-semibold focus:outline-none focus:ring-2 focus:ring-blue-500 w-full"
         />
       </div>
+      {/* Check-Out */}
+      {collapsed && (
+        <div className="flex flex-col w-full sm:w-auto flex-1 min-w-[140px]">
+          <label className="text-xs text-gray-400 uppercase font-semibold">
+            Check-Out
+          </label>
+          <input
+            type="date"
+            className="mt-1 bg-gray-100 rounded-lg px-4 py-2 text-gray-800 text-sm font-semibold focus:outline-none focus:ring-2 focus:ring-blue-500 w-full"
+          />
+        </div>
+      )}
 
       {/* Action Buttons */}
       <div className="flex items-center gap-4 mt-2 sm:mt-6 sm:ml-auto">

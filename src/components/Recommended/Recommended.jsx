@@ -35,10 +35,10 @@ function Recommended() {
         <button
           onClick={handlePrev}
           className="
-            absolute 
-            right-[81%]  
+            absolute
+            right-[80%]
             bg-white shadow rounded-full p-2
-            hover:bg-gray-100 transition-colors
+            hover:bg-gray-100 transition-colors cursor-pointer
           "
         >
           <IoChevronBack size={24} />
@@ -59,9 +59,9 @@ function Recommended() {
           onClick={handleNext}
           className="
             absolute
-            left-[81%]
-\            bg-white shadow rounded-full p-2
-            hover:bg-gray-100 transition-colors
+            left-[80%]
+           bg-white shadow rounded-full p-2
+            hover:bg-gray-100 transition-colors cursor-pointer
           "
         >
           <IoChevronForward size={24} />

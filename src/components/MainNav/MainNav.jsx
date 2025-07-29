@@ -11,7 +11,7 @@ function MainNav() {
       <NavItem
         title="hotel"
         icon={<MdHotel size={24} color="white" />}
-        to="/"
+        to="/hotels"
       />
       <NavItem
         title="villa"
@@ -21,12 +21,12 @@ function MainNav() {
       <NavItem
         title="taxi"
         icon={<MdLocalTaxi size={24} color="white" />}
-        to="/signup"
+        to="/"
       />
       <NavItem
         title="flights"
         icon={<GiAirplaneDeparture size={24} color="white" />}
-        to="/login"
+        to="/bookingReview"
       />
     </ul>
   );

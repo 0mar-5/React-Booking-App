@@ -1,17 +1,14 @@
-import { useState } from "react";
 import { BiSolidHome, BiMenuAltRight, BiMenuAltLeft } from "react-icons/bi";
 import { RiContactsBook3Fill } from "react-icons/ri";
 import { FaEarthAmericas } from "react-icons/fa6";
 import { BsQuestionSquareFill } from "react-icons/bs";
 import { Link, NavLink } from "react-router-dom";
 
-function SidebarComponent() {
-  const [collapsed, setCollapsed] = useState(true);
-
+function SidebarComponent({ collapsed, setCollapsed }) {
   const navItems = [
     { icon: <BiSolidHome size={24} />, label: "Home", to: "/" },
     { icon: <RiContactsBook3Fill size={24} />, label: "My Bookings", to: "" },
-    { icon: <FaEarthAmericas size={24} />, label: "Explore", to: "" },
+    { icon: <FaEarthAmericas size={24} />, label: "Explore", to: "/hotels" },
     { icon: <BsQuestionSquareFill size={24} />, label: "Support", to: "" },
   ];
 

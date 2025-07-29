@@ -49,7 +49,7 @@ function Login() {
       <div className="min-h-screen flex items-center justify-center  py-12 px-4 sm:px-6 lg:px-8">
         <Toaster position="top-center" reverseOrder={false} />
 
-        <div className="max-w-4xl w-full space-y-8 bg-white  shadow-lg flex flex-col md:flex-row">
+        <div className="max-w-4xl w-full rounded-2xl h-[600px] space-y-8 bg-white  shadow-lg flex flex-col md:flex-row">
           <div className="w-full md:w-1/2 p-8 order-1 md:order-1">
             <div className="flex flex-col items-center gap-16">
               <img src="./logo.png" alt="logo" className="w-[50%]" />
@@ -61,12 +61,18 @@ function Login() {
             <form onSubmit={handleSubmit(onSubmit)} className="mt-8 space-y-6">
               <div className="space-y-4">
                 <FormInput
-                  label="email"
+                  label="Email"
                   id="email"
                   type="email"
                   name="email"
                   register={register}
-                  rules={{ required: "Email is required" }}
+                  rules={{
+                    required: "Email is required",
+                    pattern: {
+                      value: /^[\w-.]+@([\w-]+\.)+[\w-]{2,4}$/,
+                      message: "Enter a valid email address",
+                    },
+                  }}
                   error={errors.email}
                 />
 
@@ -76,7 +82,14 @@ function Login() {
                   type="password"
                   name="password"
                   register={register}
-                  rules={{ required: "Password is required" }}
+                  rules={{
+                    required: "Password is required",
+                    minLength: {
+                      value: 8,
+                      message:
+                        "Password must be at least 8 characters or digits",
+                    },
+                  }}
                   error={errors.password}
                 />
               </div>
@@ -105,9 +118,13 @@ function Login() {
           </div>
 
           {/* Image container */}
-          <div className="w-full md:w-1/2 bg-gray-200  order-2 md:order-2">
+          <div className="hidden md:block w-full md:w-1/2 bg-gray-200 order-2 md:order-2">
             <div className="h-full w-full flex items-center justify-center text-gray-500">
-              <img src="./BG.png" alt="airplan image" />
+              <img
+                src="./BG.png"
+                alt="airplane image"
+                className="h-full w-full"
+              />
             </div>
           </div>
         </div>

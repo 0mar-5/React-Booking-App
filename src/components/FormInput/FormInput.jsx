@@ -38,7 +38,7 @@ function FormInput({
         />
       )}
 
-      {error && <p className="mt-2 text-sm text-red-600">{error.message}</p>}
+      {error && <p className="mt-1 text-sm text-red-600">{error.message}</p>}
     </div>
   );
 }
