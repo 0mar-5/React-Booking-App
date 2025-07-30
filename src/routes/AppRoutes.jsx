@@ -1,5 +1,6 @@
 import { lazy } from "react";
 import { Routes, Route } from "react-router-dom";
+import PrivateRoute from "./PrivateRoute";
 
 const Home = lazy(() => import("../pages/Home"));
 const Login = lazy(() => import("../pages/Login"));
@@ -17,9 +18,16 @@ export default function AppRoutes() {
       <Route path="/login" element={<Login />} />
       <Route path="/signup" element={<SignUp />} />
       <Route path="/hotelDetails/:id" element={<HotelDetails />} />
-      <Route path="/bookingReview/:id" element={<BookingReview />} />
-      <Route path="/hotels" element={<Hotels />} />
+      <Route
+        path="/bookingReview/:id"
+        element={
+          <PrivateRoute>
+            <BookingReview />
+          </PrivateRoute>
+        }
+      />
       <Route path="/userProfile" element={<UserProfile />} />
+      <Route path="/hotels" element={<Hotels />} />
       <Route path="*" element={<NotFound />} />
     </Routes>
   );

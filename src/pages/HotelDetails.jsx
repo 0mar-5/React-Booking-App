@@ -7,7 +7,9 @@ function HotelDetails() {
     <>
       <Navbar />
       <HotelDetailsCard />
-      <Recommended />
+      <div className="w-[75%] mx-auto">
+        <Recommended />
+      </div>
     </>
   );
 }
