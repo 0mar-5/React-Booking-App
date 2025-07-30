@@ -3,8 +3,14 @@ import { RiContactsBook3Fill } from "react-icons/ri";
 import { FaEarthAmericas } from "react-icons/fa6";
 import { BsQuestionSquareFill } from "react-icons/bs";
 import { Link, NavLink } from "react-router-dom";
+import { useDispatch, useSelector } from "react-redux";
+import { toggleSidebar } from "../../store/sidebarSlice";
 
-function SidebarComponent({ collapsed, setCollapsed }) {
+function SidebarComponent() {
+  const { isLoggedIn } = useSelector((state) => state.user);
+  const dispatch = useDispatch();
+  const isCollapsed = useSelector((state) => state.sidebar.isCollapsed);
+
   const navItems = [
     { icon: <BiSolidHome size={24} />, label: "Home", to: "/" },
     { icon: <RiContactsBook3Fill size={24} />, label: "My Bookings", to: "" },
@@ -15,11 +21,11 @@ function SidebarComponent({ collapsed, setCollapsed }) {
   return (
     <aside
       className={`absolute h-[650px] z-10 flex flex-col justify-between transition-all duration-600 ease-in-out rounded-lg pb-3
- ${collapsed ? "w-16" : "w-56"} text-white
+ ${isCollapsed ? "w-16" : "w-56"} text-white
       bg-gradient-to-b from-[#0A69DA] via-[#0856C8] to-[#0231A5]`}
     >
       <div className="flex items-center justify-between p-4">
-        {!collapsed && (
+        {!isCollapsed && (
           <div className="flex items-center gap-2">
             <NavLink to="/" className="font-bold text-lg font-serif italic">
               Booking
@@ -27,10 +33,10 @@ function SidebarComponent({ collapsed, setCollapsed }) {
           </div>
         )}
         <button
-          onClick={() => setCollapsed(!collapsed)}
+          onClick={() => dispatch(toggleSidebar())}
           className="text-white text-2xl p-1 rounded hover:bg-white/20"
         >
-          {collapsed ? <BiMenuAltLeft /> : <BiMenuAltRight />}
+          {isCollapsed ? <BiMenuAltLeft /> : <BiMenuAltRight />}
         </button>
       </div>
 
@@ -41,18 +47,18 @@ function SidebarComponent({ collapsed, setCollapsed }) {
               <NavLink
                 to={item.to}
                 className={`flex items-center px-3 py-2 rounded hover:bg-white/20 transition-colors ${
-                  collapsed ? "justify-center" : "gap-3"
+                  isCollapsed ? "justify-center" : "gap-3"
                 }`}
               >
                 {item.icon}
-                {!collapsed && <span>{item.label}</span>}
+                {!isCollapsed && <span>{item.label}</span>}
               </NavLink>
             </li>
           ))}
         </ul>
       </nav>
 
-      {!collapsed && (
+      {!isCollapsed && !isLoggedIn && (
         <Link to="/signup" className="p-3">
           <button className="w-full bg-white text-blue-800 font-semibold py-2 rounded-3xl hover:bg-gray-100">
             Sign Up Now

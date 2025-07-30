@@ -2,9 +2,11 @@ import { useEffect, useState } from "react";
 import HotelCard from "../components/HotelCard/HotelCard";
 import { axiosInstance } from "../network/interceptor";
 import Navbar from "../components/Navbar/Navbar";
+import { useSelector } from "react-redux";
 
 function Hotels() {
   const [Hotels, setHotels] = useState([]);
+  const isCollapsed = useSelector((state) => state.sidebar.isCollapsed);
 
   useEffect(() => {
     axiosInstance.get("/hotels").then((res) => {
@@ -15,7 +17,11 @@ function Hotels() {
     <>
       <Navbar />
 
-      <div className="max-w-[960px] m-auto pt-10 space-y-4 grid grid-cols-1 md:grid-cols-2 gap-4 mt-[3%]">
+      <div
+        className={`${
+          !isCollapsed ? "w-[60%]" : "w-[75%]"
+        } m-auto pt-10 space-y-4 grid grid-cols-1 md:grid-cols-2 gap-4 mt-[3%]`}
+      >
         {Hotels.map((hotel) => (
           <div
             key={hotel.id}

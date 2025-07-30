@@ -3,7 +3,7 @@ import { FaMapMarkerAlt } from "react-icons/fa";
 import { useParams } from "react-router-dom";
 import { axiosInstance } from "../../network/interceptor";
 
-function BookingSummary() {
+function BookingSummary({ setSummaryData }) {
   const [hotel, setHotel] = useState(null);
   const { id } = useParams();
   const [checkIn, setCheckIn] = useState("");
@@ -22,13 +22,32 @@ function BookingSummary() {
     }
   }, [checkIn, checkOut]);
 
-  const totalPrice = nights * hotel?.pricing[0]?.originalPrice;
+  const totalPrice = nights * (hotel?.pricing[0]?.originalPrice || 0);
 
   useEffect(() => {
     axiosInstance.get(`/hotels/${id}`).then((res) => {
       setHotel(res.data);
     });
   }, [id]);
+
+  useEffect(() => {
+    if (hotel && checkIn && checkOut && nights > 0) {
+      setSummaryData?.({
+        hotelId: hotel._id,
+        hotelName: hotel.name,
+        image: hotel.images?.main,
+        address: hotel.address?.street,
+        pricePerNight: hotel.pricing[0]?.originalPrice,
+        discount: hotel.pricing[0]?.discount,
+        checkIn,
+        checkOut,
+        nights,
+        totalPrice,
+      });
+    } else {
+      setSummaryData?.(null);
+    }
+  }, [hotel, checkIn, checkOut, nights, totalPrice, setSummaryData]);
 
   return (
     <div className="max-w-xs bg-white rounded-lg shadow p-4 space-y-4">
@@ -70,6 +89,7 @@ function BookingSummary() {
           <input
             type="date"
             value={checkIn}
+            required
             onChange={(e) => setCheckIn(e.target.value)}
             className="mt-1 w-full border rounded-md p-2 text-sm"
           />
@@ -81,6 +101,7 @@ function BookingSummary() {
           <input
             type="date"
             value={checkOut}
+            required
             onChange={(e) => setCheckOut(e.target.value)}
             className="mt-1 w-full border rounded-md p-2 text-sm"
           />
@@ -90,7 +111,9 @@ function BookingSummary() {
       <div className="space-y-1 text-sm">
         <div className="flex justify-between">
           <span className="text-gray-600">Price Per Night</span>
-          <span className="font-medium">$399</span>
+          <span className="font-medium">
+            ${hotel?.pricing[0]?.originalPrice || 0}
+          </span>
         </div>
         <div className="flex justify-between">
           <span className="text-gray-600">Nights</span>
@@ -98,7 +121,7 @@ function BookingSummary() {
         </div>
         <div className="flex justify-between border-t pt-2 font-semibold">
           <span>Total Price</span>
-          <span>${totalPrice}</span>
+          <span>${totalPrice.toFixed(2)}</span>
         </div>
       </div>
     </div>

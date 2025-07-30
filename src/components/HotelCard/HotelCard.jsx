@@ -43,13 +43,13 @@ function HotelCard({ hotel }) {
           </div>
           <div className="flex gap-2">
             <Link to={`/hotelDetails/${hotel.id}`}>
-              <button className="px-3 py-2 border rounded-md text-sm font-medium hover:bg-gray-100">
+              <button className="px-3 py-2 border rounded-md text-sm font-medium hover:bg-gray-100 cursor-pointer">
                 View
               </button>
             </Link>
             <Link to={`/bookingReview/${hotel.id}`}>
-              <button className="px-3 py-2 bg-blue-600 hover:bg-blue-700 text-white rounded-md text-sm font-medium">
-                Book
+              <button className="px-3 py-2 bg-blue-600 hover:bg-blue-700 text-white rounded-md text-sm font-medium cursor-pointer">
+                Book Now
               </button>
             </Link>
           </div>

@@ -2,6 +2,8 @@ import { useForm } from "react-hook-form";
 import { Link, useNavigate } from "react-router-dom";
 import toast, { Toaster } from "react-hot-toast";
 import FormInput from "../components/FormInput/FormInput";
+import { useDispatch } from "react-redux";
+import { loginUser } from "../store/userSlice";
 
 function Login() {
   const {
@@ -10,37 +12,22 @@ function Login() {
     formState: { errors },
   } = useForm({ mode: "onBlur" });
   const navigate = useNavigate();
+  const dispatch = useDispatch();
 
   function onSubmit(data) {
     console.log("submit", data);
-    const users = JSON.parse(localStorage.getItem("users")) || [];
+    const allUsers = JSON.parse(localStorage.getItem("allUsers")) || [];
 
-    const matchedUser = users.find(
+    const matchedUser = allUsers.find(
       (user) => user.email === data.email && user.password === data.password
     );
 
     if (matchedUser) {
-      // setIsLoggedIn(true);
-
-      // const userCart = matchedUser.cartItems || [];
-      // setCartItems(userCart);
-
-      const updatedUser = {
-        ...matchedUser,
-        isLoggedIn: true,
-      };
-
-      localStorage.setItem("userData", JSON.stringify(updatedUser));
-
-      const updatedUsers = users.map((u) =>
-        u.email === matchedUser.email ? updatedUser : u
-      );
-      localStorage.setItem("users", JSON.stringify(updatedUsers));
-
+      dispatch(loginUser(matchedUser));
       toast.success("Login successful!");
       navigate("/");
     } else {
-      toast.error("Invalid email or password");
+      toast.error("Invalid Email or Password");
     }
   }
 

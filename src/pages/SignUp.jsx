@@ -2,6 +2,8 @@ import { useForm } from "react-hook-form";
 import { Link, useNavigate } from "react-router-dom";
 import toast, { Toaster } from "react-hot-toast";
 import FormInput from "../components/FormInput/FormInput";
+import { useDispatch } from "react-redux";
+import { createUser } from "../store/userSlice";
 
 function SignUp() {
   const {
@@ -11,26 +13,29 @@ function SignUp() {
     formState: { errors },
   } = useForm();
   const navigate = useNavigate();
+  const dispatch = useDispatch();
+
   const password = watch("password");
 
-  function onSubmitForm(data) {
-    console.log("signup data", data);
-    const users = JSON.parse(localStorage.getItem("users")) || [];
+  function onSubmitForm(userData) {
+    console.log("signup data", userData);
+    const allUsers = JSON.parse(localStorage.getItem("allUsers")) || [];
 
-    const isExisting = users.find((user) => user.email === data.email);
+    const isExisting = allUsers.find((user) => user.email === userData.email);
     if (isExisting) {
-      toast.error("User with this email already exists.");
+      toast.error("User already exists");
       return;
     }
 
     const newUser = {
-      ...data,
-      id: Date.now(),
+      ...userData,
+      id: Date.now().toString(),
     };
 
-    users.push(newUser);
-    localStorage.setItem("users", JSON.stringify(users));
+    allUsers.push(newUser);
+    localStorage.setItem("allUsers", JSON.stringify(allUsers));
 
+    dispatch(createUser(newUser));
     toast.success("Registered successfully!");
     navigate("/login");
   }
@@ -66,8 +71,8 @@ function SignUp() {
                 rules={{
                   required: "User name is required",
                   minLength: {
-                    value: 8,
-                    message: "User name must be at least 8 characters",
+                    value: 4,
+                    message: "User name must be at least 4 characters",
                   },
                 }}
                 error={errors.userName}
@@ -156,9 +161,9 @@ function SignUp() {
               </div>
               <p>
                 Already have an account?
-                <Link to="/login" className="text-blue-700 pl-0.5">
+                <button to="/login" className="text-blue-700 pl-0.5">
                   Login
-                </Link>
+                </button>
               </p>
             </form>
           </div>

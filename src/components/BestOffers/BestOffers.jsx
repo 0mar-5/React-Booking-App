@@ -12,7 +12,7 @@ function BestOffers() {
   }, []);
 
   return (
-    <div className="bg-white p-6 rounded-xl shadow-sm mx-auto w-[68%]">
+    <div className="bg-white p-6 rounded-xl shadow-sm mx-auto ">
       <div className="flex justify-between items-center mb-6">
         <h3 className="text-xl font-bold text-gray-900">Best Offer</h3>
         <p className="text-sm font-medium text-gray-500 cursor-pointer hover:text-gray-700">

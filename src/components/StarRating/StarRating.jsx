@@ -7,7 +7,7 @@ const StarRating = ({ rating }) => {
     } else if (rating >= i - 0.5) {
       return <FaStarHalfAlt key={i} className="text-[#3C6097] text-lg" />;
     } else {
-      return <FaRegStar key={i} className="text-yellow-500 text-lg" />;
+      return <FaRegStar key={i} className="text-[#3C6097] text-lg" />;
     }
   });
 

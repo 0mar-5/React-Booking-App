@@ -1,14 +1,13 @@
-function SearchBar({ collapsed }) {
+function SearchBar({ width, isCollapsed }) {
   return (
     <div
-      className="
-        absolute top-[88%] left-1/2 -translate-x-1/2
-        flex flex-col sm:flex-row flex-wrap
-        items-center gap-4
-        bg-white shadow-md rounded-lg
-        px-4 py-3
-        w-[90%] sm:w-[80%] md:w-[70%] lg:w-[60%] xl:max-w-5xl
-      "
+      className={`${width}
+    absolute top-[88%] left-1/2 -translate-x-1/2
+    flex flex-col sm:flex-row flex-wrap
+    items-center gap-4
+    bg-white shadow-md rounded-lg
+    transition-all duration-400
+    px-4 py-3`}
     >
       {/* Search */}
       <div className="flex flex-col w-full sm:w-auto flex-1 min-w-[140px]">
@@ -46,7 +45,7 @@ function SearchBar({ collapsed }) {
         />
       </div>
       {/* Check-Out */}
-      {collapsed && (
+      {isCollapsed && (
         <div className="flex flex-col w-full sm:w-auto flex-1 min-w-[140px]">
           <label className="text-xs text-gray-400 uppercase font-semibold">
             Check-Out

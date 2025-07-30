@@ -4,10 +4,17 @@ import { MdLocalTaxi } from "react-icons/md";
 import { GiAirplaneDeparture } from "react-icons/gi";
 
 import NavItem from "../navItem/NavItem";
+import { useSelector } from "react-redux";
 
 function MainNav() {
+  const { isLoggedIn } = useSelector((state) => state.user);
+
   return (
-    <ul className="flex justify-center items-center gap-6 absolute top-[63%] right-[45%] [justify-self:anchor-center] pl-[2rem]">
+    <ul
+      className={`flex justify-center items-center gap-6 absolute ${
+        isLoggedIn ? "top-[45%]" : "top-[63%]"
+      } right-[45%] [justify-self:anchor-center] pl-[2rem]`}
+    >
       <NavItem
         title="hotel"
         icon={<MdHotel size={24} color="white" />}
