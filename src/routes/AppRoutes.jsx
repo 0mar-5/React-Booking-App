@@ -7,6 +7,7 @@ const SignUp = lazy(() => import("../pages/SignUp"));
 const HotelDetails = lazy(() => import("../pages/HotelDetails"));
 const BookingReview = lazy(() => import("../pages/BookingReview"));
 const Hotels = lazy(() => import("../pages/Hotels"));
+const UserProfile = lazy(() => import("../pages/UserProfile"));
 const NotFound = lazy(() => import("../pages/NotFound"));
 
 export default function AppRoutes() {
@@ -18,6 +19,7 @@ export default function AppRoutes() {
       <Route path="/hotelDetails/:id" element={<HotelDetails />} />
       <Route path="/bookingReview/:id" element={<BookingReview />} />
       <Route path="/hotels" element={<Hotels />} />
+      <Route path="/userProfile" element={<UserProfile />} />
       <Route path="*" element={<NotFound />} />
     </Routes>
   );

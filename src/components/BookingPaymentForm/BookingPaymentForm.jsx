@@ -34,6 +34,7 @@ function BookingPaymentForm({ summaryData }) {
     summaryData.checkIn &&
     summaryData.checkOut &&
     summaryData.nights;
+
   const handleFormSubmit = (data) => {
     if (!isSummaryComplete) {
       toast.error("Please complete your booking before submitting.");
