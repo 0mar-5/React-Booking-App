@@ -2,14 +2,16 @@ import { Link } from "react-router-dom";
 import PopularServiceIcons from "../PopularServiceIcons/PopularServiceIcons";
 import { FaStar } from "react-icons/fa6";
 
-function BookingProfileCard({ hotel }) {
+function BookingProfileCard({ booking }) {
+  const hotel = booking.hotelData;
+  console.log(hotel);
   return (
     <div className="relative flex bg-white rounded-lg shadow hover:shadow-lg overflow-hidden h-60 md:h-48">
       {/* IMAGE */}
       <div className="relative w-40 min-w-[160px] h-full">
-        <Link to={`/hotelDetails/${hotel.id}`}>
+        <Link to={`/hotelDetails/${hotel?.id}`}>
           <img
-            src={hotel?.image}
+            src={hotel?.images?.main}
             alt="hotel"
             className="object-cover w-full h-full"
           />
@@ -21,29 +23,32 @@ function BookingProfileCard({ hotel }) {
         {/* top part */}
         <div className="space-y-2">
           <h3 className="text-lg font-bold leading-tight text-gray-900 w-[80%]">
-            {hotel?.hotelName}
+            {hotel?.name}
           </h3>
-          <p className="text-sm text-gray-500">{hotel?.address}</p>
+          <p className="text-sm text-gray-500">
+            {`${hotel?.address?.street}, ${hotel?.address?.city}, ${hotel?.address?.country} `}
+          </p>
 
           {/* Amenities */}
-          {/* <PopularServiceIcons amenities={hotel?.amenities?.slice(0, 2)} /> */}
+          <PopularServiceIcons amenities={hotel?.amenities.slice(0, 2)} />
         </div>
-
         {/* bottom part */}
         <div className="flex justify-between items-center mt-3">
           <div className="flex items-end gap-1">
-            {hotel?.discount && (
-              <p className="text-sm text-orange-500 font-medium">
-                {hotel?.discount}
-              </p>
-            )}
-            <p className="text-xl font-bold text-gray-800 leading-none">
-              ${hotel?.totalPrice}
+            <p className="text-[18px] font-bold text-gray-800 leading-none">
+              Total price : ${booking?.totalPrice},
+            </p>
+            <p className="text-sm  pl-1 font-medium">
+              Nights: {booking?.nights}
             </p>
           </div>
-          <div className="flex gap-2">
-            <p className="px-3 py-2 ">from: {hotel?.checkIn}</p>
-            <p className="px-3 py-2  ">To: {hotel?.checkOut}</p>
+          <div className="flex">
+            <p className="px-3 py-1 font-[11px] text-[#858595]">
+              from: {booking?.checkIn}
+            </p>
+            <p className="px-3 py-1  font-[11px] text-[#858595]">
+              To: {booking?.checkOut}
+            </p>
           </div>
         </div>
       </div>

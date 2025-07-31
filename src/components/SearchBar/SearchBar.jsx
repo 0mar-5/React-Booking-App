@@ -11,7 +11,6 @@ function SearchBar({ width, isCollapsed }) {
 
   const handleSearch = () => {
     if (!query || !country) return;
-    console.log(query, country);
     dispatch(fetchSearchResults({ query, country })).then(() => {
       navigate("/search-results");
     });

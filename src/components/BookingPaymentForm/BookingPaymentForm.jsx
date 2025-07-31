@@ -36,11 +36,19 @@ function BookingPaymentForm({ summaryData }) {
     summaryData.nights;
 
   const handleFormSubmit = (data) => {
+    console.log("Form Submitted", data);
+    console.log("Summary Data", summaryData);
+
     if (!isSummaryComplete) {
       toast.error("Please complete your booking before submitting.");
       return;
     }
-    console.log("Form Submitted", data);
+
+    if (!summaryData?.hotelData?.id) {
+      toast.error("Hotel information is missing.");
+      return;
+    }
+
     const finalBooking = {
       ...summaryData,
       ...data,

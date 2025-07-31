@@ -33,10 +33,7 @@ function BookingSummary({ setSummaryData }) {
   useEffect(() => {
     if (hotel && checkIn && checkOut && nights > 0) {
       setSummaryData?.({
-        hotelId: hotel._id,
-        hotelName: hotel.name,
-        image: hotel.images?.main,
-        address: hotel.address?.street,
+        hotelData: hotel,
         pricePerNight: hotel.pricing[0]?.originalPrice,
         discount: hotel.pricing[0]?.discount,
         checkIn,

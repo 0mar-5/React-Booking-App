@@ -4,6 +4,7 @@ import { useEffect } from "react";
 import { loadBookingsFromStorage } from "../store/bookingSlice";
 import Navbar from "../components/Navbar/Navbar";
 import ProfileCard from "../components/ProfileCard/ProfileCard";
+import NoResult from "./NoResult";
 
 function UserProfile() {
   const dispatch = useDispatch();
@@ -18,7 +19,7 @@ function UserProfile() {
     return (
       <>
         <Navbar />
-        <p className="text-center text-gray-500 mt-10">No bookings found.</p>
+        <NoResult />
       </>
     );
   }
@@ -26,10 +27,11 @@ function UserProfile() {
   return (
     <>
       <Navbar />
+
       <div className="flex justify-center items-start gap-8 px-6 py-10">
         <div className="w-2/4 space-y-4">
-          {bookings.map((hotel) => (
-            <BookingProfileCard key={hotel.createdAt} hotel={hotel} />
+          {bookings.map((booking) => (
+            <BookingProfileCard key={booking.createdAt} booking={booking} />
           ))}
         </div>
 

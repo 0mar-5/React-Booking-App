@@ -1,23 +1,49 @@
 import { createSlice } from "@reduxjs/toolkit";
 
-const initialBookings = JSON.parse(localStorage.getItem("bookings")) || [];
+const loadFromLocalStorage = () => {
+  try {
+    const data = localStorage.getItem("bookings");
+    return data ? JSON.parse(data) : [];
+  } catch (err) {
+    console.error("Failed to parse bookings from localStorage", err);
+    return [];
+  }
+};
+
+const saveToLocalStorage = (bookings) => {
+  try {
+    localStorage.setItem("bookings", JSON.stringify(bookings));
+  } catch (err) {
+    console.error("Failed to save bookings to localStorage", err);
+  }
+};
 
 const bookingSlice = createSlice({
   name: "booking",
   initialState: {
-    bookings: initialBookings,
+    bookings: loadFromLocalStorage(),
   },
   reducers: {
     addBooking: (state, action) => {
-      state.bookings.push(action.payload);
-      localStorage.setItem("bookings", JSON.stringify(state.bookings));
+      const newBooking = {
+        ...action.payload,
+        id: Date.now(),
+        createdAt: new Date().toISOString(),
+      };
+      state.bookings.push(newBooking);
+      saveToLocalStorage(state.bookings);
     },
     loadBookingsFromStorage: (state) => {
-      const stored = JSON.parse(localStorage.getItem("bookings")) || [];
-      state.bookings = stored;
+      state.bookings = loadFromLocalStorage();
+    },
+    clearBookings: (state) => {
+      state.bookings = [];
+      localStorage.removeItem("bookings");
     },
   },
 });
 
-export const { addBooking, loadBookingsFromStorage } = bookingSlice.actions;
+export const { addBooking, loadBookingsFromStorage, clearBookings } =
+  bookingSlice.actions;
+
 export default bookingSlice.reducer;

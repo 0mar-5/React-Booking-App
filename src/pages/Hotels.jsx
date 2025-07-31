@@ -18,8 +18,8 @@ function Hotels() {
       <Navbar />
 
       <div
-        className={`${
-          !isCollapsed ? "w-[60%]" : "w-[75%]"
+        className={`m-0auto ${
+          !isCollapsed ? "ml-20" : "ml-0 "
         } m-auto pt-10 space-y-4 grid grid-cols-1 md:grid-cols-2 gap-4 mt-[3%]`}
       >
         {Hotels.map((hotel) => (

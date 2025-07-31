@@ -10,7 +10,7 @@ function ProfileCard() {
       <div className="flex flex-col items-center">
         {/* Avatar */}
         <div className="w-24 h-24 rounded-full bg-blue-200 text-white flex items-center justify-center text-2xl font-bold mb-4 shadow-sm">
-          MH
+          {user?.userName?.slice(0, 2)}
         </div>
 
         {/* Name */}

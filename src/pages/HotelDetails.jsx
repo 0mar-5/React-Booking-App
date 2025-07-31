@@ -6,6 +6,7 @@ function HotelDetails() {
   return (
     <>
       <Navbar />
+
       <HotelDetailsCard />
       <div className="w-[75%] mx-auto">
         <Recommended />
