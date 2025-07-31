@@ -4,7 +4,7 @@ import { FaStar } from "react-icons/fa6";
 
 function BookingProfileCard({ booking }) {
   const hotel = booking.hotelData;
-  console.log(hotel);
+
   return (
     <div className="relative flex bg-white rounded-lg shadow hover:shadow-lg overflow-hidden h-60 md:h-48">
       {/* IMAGE */}
@@ -32,24 +32,21 @@ function BookingProfileCard({ booking }) {
           {/* Amenities */}
           <PopularServiceIcons amenities={hotel?.amenities.slice(0, 2)} />
         </div>
-        {/* bottom part */}
-        <div className="flex justify-between items-center mt-3">
-          <div className="flex items-end gap-1">
-            <p className="text-[18px] font-bold text-gray-800 leading-none">
-              Total price : ${booking?.totalPrice},
-            </p>
-            <p className="text-sm  pl-1 font-medium">
-              Nights: {booking?.nights}
-            </p>
-          </div>
-          <div className="flex">
-            <p className="px-3 py-1 font-[11px] text-[#858595]">
-              from: {booking?.checkIn}
-            </p>
-            <p className="px-3 py-1  font-[11px] text-[#858595]">
-              To: {booking?.checkOut}
-            </p>
-          </div>
+        <div className="flex">
+          <p className=" py-1 font-[11px] text-[#858595]">
+            from: {booking?.checkIn}
+          </p>
+          <p className=" py-1  font-[11px] text-[#858595]">
+            To: {booking?.checkOut}
+          </p>
+        </div>
+        <div className="flex items-end gap-1">
+          <p className="text-sm  pl-1 font-medium">
+            Nights: {booking?.nights} ,
+          </p>
+          <p className="text-[18px] font-bold text-gray-800 leading-none">
+            Total price : ${booking?.totalPrice}
+          </p>
         </div>
       </div>
 

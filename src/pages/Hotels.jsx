@@ -19,7 +19,7 @@ function Hotels() {
 
       <div
         className={`m-0auto ${
-          !isCollapsed ? "ml-20" : "ml-0 "
+          !isCollapsed ? "w-[65%]" : "w-[75%]"
         } m-auto pt-10 space-y-4 grid grid-cols-1 md:grid-cols-2 gap-4 mt-[3%]`}
       >
         {Hotels.map((hotel) => (

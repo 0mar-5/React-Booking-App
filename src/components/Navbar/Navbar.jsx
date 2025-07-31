@@ -26,10 +26,10 @@ function Navbar() {
         </div>
       </div>
       <SearchBar
-        width={isCollapsed ? "w-[75%]" : "w-[60%]"}
+        width={isCollapsed ? "w-[75%]" : "w-[65%]"}
         isCollapsed={isCollapsed}
       />
-      <QuickNavigation width={isCollapsed ? "w-[75%]" : "w-[60%]"} />
+      <QuickNavigation width={isCollapsed ? "w-[75%]" : "w-[65%]"} />
     </header>
   );
 }

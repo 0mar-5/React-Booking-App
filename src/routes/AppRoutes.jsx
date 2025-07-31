@@ -27,7 +27,14 @@ export default function AppRoutes() {
           </PrivateRoute>
         }
       />
-      <Route path="/userProfile" element={<UserProfile />} />
+      <Route
+        path="/userProfile"
+        element={
+          <PrivateRoute>
+            <UserProfile />
+          </PrivateRoute>
+        }
+      />
       <Route path="/search-results" element={<SearchPage />} />
       <Route path="/hotels" element={<Hotels />} />
       <Route path="*" element={<NotFound />} />

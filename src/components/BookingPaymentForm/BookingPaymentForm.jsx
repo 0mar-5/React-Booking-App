@@ -27,6 +27,7 @@ function BookingPaymentForm({ summaryData }) {
       setValue("lastName", lastName || "");
       setValue("email", user.email || "");
       setValue("country", user.country || "");
+      setValue("mobile", user.phone || "");
     }
   }, [user, setValue]);
   const isSummaryComplete =
@@ -36,9 +37,6 @@ function BookingPaymentForm({ summaryData }) {
     summaryData.nights;
 
   const handleFormSubmit = (data) => {
-    console.log("Form Submitted", data);
-    console.log("Summary Data", summaryData);
-
     if (!isSummaryComplete) {
       toast.error("Please complete your booking before submitting.");
       return;
@@ -153,10 +151,10 @@ function BookingPaymentForm({ summaryData }) {
                 className="mt-1 w-full border rounded-md p-2 text-gray-700"
               >
                 <option value="">Select</option>
-                <option>Egypt</option>
-                <option>Morocco</option>
-                <option>Greece</option>
-                <option>United States</option>
+                <option value="EG">Egypt</option>
+                <option value="MA">Morocco</option>
+                <option value="GR">Greece</option>
+                <option value="US">United States</option>
               </select>
               {errors.country && (
                 <p className="text-red-500 text-sm">{errors.country.message}</p>
