@@ -28,7 +28,7 @@ function SidebarComponent() {
  ${isCollapsed ? "w-16" : "w-56"} text-white
       bg-gradient-to-b from-[#0A69DA] via-[#0856C8] to-[#0231A5]`}
     >
-      <div className="flex items-center justify-between p-4">
+      <div className="flex items-center justify-between p-4 ">
         {!isCollapsed && (
           <div className="flex items-center gap-2">
             <NavLink to="/" className="font-bold text-lg font-serif italic">
@@ -38,7 +38,7 @@ function SidebarComponent() {
         )}
         <button
           onClick={() => dispatch(toggleSidebar())}
-          className="text-white text-2xl p-1 rounded hover:bg-white/20"
+          className="text-white text-2xl p-1 rounded hover:bg-white/20 cursor-pointer"
         >
           {isCollapsed ? <BiMenuAltLeft /> : <BiMenuAltRight />}
         </button>

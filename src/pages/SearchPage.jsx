@@ -1,14 +1,16 @@
 import { useSelector } from "react-redux";
 import Navbar from "../components/Navbar/Navbar";
 import HotelCard from "../components/HotelCard/HotelCard";
+import NoResult from "./NoResult";
+import LoadingSpinner from "../components/LoadingSpinner/LoadingSpinner";
 
 function SearchPage() {
   const { results, loading, error } = useSelector((state) => state.search);
   const isCollapsed = useSelector((state) => state.sidebar.isCollapsed);
 
-  if (loading) return <p>Loading...</p>;
+  if (loading) return <LoadingSpinner />;
   if (error) return <p className="text-red-500">{error}</p>;
-  if (results.length === 0) return <p>No results found.</p>;
+  if (results.length === 0) return <NoResult />;
 
   return (
     <>

@@ -1,12 +1,20 @@
-# React + Vite
+React Booking App
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+A hotel booking web application built with React + Vite, providing users with a clean, responsive interface to browse hotels and make bookings. This project focuses on smooth user experience, state management, and form handling, all styled using Tailwind CSS.
 
-Currently, two official plugins are available:
+🚀 Features
+🛠 Built with React and Vite for fast development and lightning-fast hot module replacement (HMR)
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+⚙️ Redux for global state management (user and booking data)
 
-## Expanding the ESLint configuration
+🌐 React Router for seamless navigation
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+🎯 React Hook Form for form validation and user input handling
+
+🔔 React Hot Toast for elegant notifications and alerts
+
+🎨 Tailwind CSS for modern, utility-first styling
+
+🌟 React Icons for scalable icons
+
+💾 LocalStorage used to persist user and booking data across sessions

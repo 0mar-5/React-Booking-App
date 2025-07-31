@@ -8,26 +8,26 @@ export const fetchSearchResults = createAsyncThunk(
       const response = await axiosInstance.get(`/hotels`);
 
       const filtered = response.data.filter((hotel) => {
-        const nameMatch = hotel.name
-          ?.toLowerCase()
-          .includes(query.toLowerCase());
+        const hotelName = hotel.name?.toLowerCase() || "";
+        const hotelCountry = hotel.address?.country?.toLowerCase() || "";
+        const hotelIso = hotel.address?.countryIsoCode?.toLowerCase() || "";
 
-        const countryMatch = hotel.address?.country
-          ?.toLowerCase()
-          .includes(country.toLowerCase());
-
-        const isoMatch =
-          hotel.address?.countryIsoCode?.toLowerCase() ===
-          country.toLowerCase();
+        const nameMatch = hotelName.includes(query.toLowerCase());
+        const countryMatch = hotelCountry.includes(country.toLowerCase());
+        const isoMatch = hotelIso === country.toLowerCase();
 
         const queryExists = query.trim() !== "";
         const countryExists = country.trim() !== "";
 
         if (queryExists && countryExists) {
-          return (nameMatch || countryMatch) && (countryMatch || isoMatch);
-        } else if (queryExists) {
-          return nameMatch || countryMatch || isoMatch;
-        } else if (countryExists) {
+          return nameMatch && (countryMatch || isoMatch);
+        }
+
+        if (queryExists) {
+          return nameMatch;
+        }
+
+        if (countryExists) {
           return countryMatch || isoMatch;
         }
 
@@ -41,7 +41,7 @@ export const fetchSearchResults = createAsyncThunk(
   }
 );
 
-// Slice
+// Search slice
 const searchSlice = createSlice({
   name: "search",
   initialState: {

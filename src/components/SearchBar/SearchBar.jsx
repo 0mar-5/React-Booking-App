@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { useDispatch } from "react-redux";
 import { useNavigate } from "react-router-dom";
-import { fetchSearchResults } from "../../store/searchSlice";
+import { fetchSearchResults, clearResults } from "../../store/searchSlice";
 
 function SearchBar({ width, isCollapsed }) {
   const dispatch = useDispatch();
@@ -10,10 +10,16 @@ function SearchBar({ width, isCollapsed }) {
   const [country, setCountry] = useState("EG");
 
   const handleSearch = () => {
-    if (!query || !country) return;
+    if (!query && !country) return;
+
     dispatch(fetchSearchResults({ query, country })).then(() => {
       navigate("/search-results");
     });
+  };
+  const handleClearFilters = () => {
+    setQuery("");
+    setCountry("EG");
+    dispatch(clearResults());
   };
   return (
     <div
@@ -81,7 +87,10 @@ function SearchBar({ width, isCollapsed }) {
 
       {/* Action Buttons */}
       <div className="flex items-center gap-4 mt-2 sm:mt-6 sm:ml-auto">
-        <button className="text-sm font-semibold text-gray-800 hover:underline whitespace-nowrap">
+        <button
+          onClick={handleClearFilters}
+          className="text-sm font-semibold text-gray-800 hover:underline whitespace-nowrap"
+        >
           Clear Filters
         </button>
         <button
