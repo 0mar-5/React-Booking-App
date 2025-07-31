@@ -10,7 +10,7 @@ function Home() {
     <>
       <Navbar />
       <div
-        className={`transition-all duration-300 mx-auto ${
+        className={`transition-all duration-300 mx-auto pb-10 ${
           !isCollapsed ? "w-[60%]" : "w-[75%]"
         }`}
       >

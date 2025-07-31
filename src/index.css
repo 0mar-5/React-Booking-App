@@ -14,3 +14,7 @@ body {
   align-items: center;
   justify-content: center;
 }
+
+.m-0auto {
+  margin: 0 auto;
+}

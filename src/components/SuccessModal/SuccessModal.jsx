@@ -1,4 +1,5 @@
 import { FaCheckCircle } from "react-icons/fa";
+import { Link } from "react-router-dom";
 
 function SuccessModal({ onClose }) {
   return (
@@ -7,12 +8,14 @@ function SuccessModal({ onClose }) {
         <FaCheckCircle className="text-green-500 mx-auto text-6xl mb-4" />
         <h2 className="text-2xl font-semibold mb-2">Booking Success</h2>
         <p className="text-gray-500 mb-6">Your booking has been confirmed.</p>
-        <button
-          onClick={onClose}
-          className="bg-blue-600 hover:bg-blue-700 text-white font-medium py-2 px-6 rounded-md  cursor-pointer"
-        >
-          VIEW ALL BOOKINGS
-        </button>
+        <Link to="/userProfile">
+          <button
+            onClick={onClose}
+            className="bg-blue-600 hover:bg-blue-700 text-white font-medium py-2 px-6 rounded-md  cursor-pointer"
+          >
+            VIEW ALL BOOKINGS
+          </button>
+        </Link>
       </div>
     </div>
   );

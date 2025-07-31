@@ -26,9 +26,11 @@ function RecommendedCard({ recHotel }) {
             <p className="text-[12px] text-gray-500">
               Cupon: <span className="font-bold">DHSHJAB09D</span>
             </p>
-            <button className="bg-[#fdf1f3] hover:bg-red-100 text-[#DF142D] text-sm font-medium px-4 py-2 rounded-full shadow-sm transition-colors cursor-pointer">
-              Book Now
-            </button>
+            <Link to={`/bookingReview/${recHotel.id}`}>
+              <button className="bg-[#fdf1f3] hover:bg-red-100 text-[#DF142D] text-sm font-medium px-4 py-2 rounded-full shadow-sm transition-colors cursor-pointer">
+                Book Now
+              </button>
+            </Link>
           </div>
         </div>
       </div>

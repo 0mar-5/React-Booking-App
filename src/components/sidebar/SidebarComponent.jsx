@@ -13,7 +13,11 @@ function SidebarComponent() {
 
   const navItems = [
     { icon: <BiSolidHome size={24} />, label: "Home", to: "/" },
-    { icon: <RiContactsBook3Fill size={24} />, label: "My Bookings", to: "" },
+    {
+      icon: <RiContactsBook3Fill size={24} />,
+      label: "My Bookings",
+      to: "/userProfile",
+    },
     { icon: <FaEarthAmericas size={24} />, label: "Explore", to: "/hotels" },
     { icon: <BsQuestionSquareFill size={24} />, label: "Support", to: "" },
   ];

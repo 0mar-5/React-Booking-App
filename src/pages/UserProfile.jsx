@@ -7,7 +7,6 @@ import ProfileCard from "../components/ProfileCard/ProfileCard";
 
 function UserProfile() {
   const dispatch = useDispatch();
-  // const isCollapsed = useSelector((state) => state.sidebar.isCollapsed);
 
   useEffect(() => {
     dispatch(loadBookingsFromStorage());
@@ -28,14 +27,12 @@ function UserProfile() {
     <>
       <Navbar />
       <div className="flex justify-center items-start gap-8 px-6 py-10">
-        {/* Booking Cards Section */}
         <div className="w-2/4 space-y-4">
           {bookings.map((hotel) => (
             <BookingProfileCard key={hotel.createdAt} hotel={hotel} />
           ))}
         </div>
 
-        {/* Profile Card Section */}
         <div className="w-1/4">
           <ProfileCard />
         </div>

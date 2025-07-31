@@ -33,7 +33,7 @@ function HotelCard({ hotel }) {
         <div className="flex justify-between items-center mt-3">
           <div className="flex items-end gap-1">
             {hotel?.pricing[0]?.discount && (
-              <p className="text-sm text-orange-500 font-medium">
+              <p className="text-sm text-[#FFC54D] pl-1 font-medium">
                 {hotel?.pricing[0]?.discount}
               </p>
             )}
