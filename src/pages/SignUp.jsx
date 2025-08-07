@@ -161,9 +161,11 @@ function SignUp() {
               </div>
               <p>
                 Already have an account?
-                <button to="/login" className="text-blue-700 pl-0.5">
-                  Login
-                </button>
+                <Link to="/login">
+                  <button className="text-blue-700 pl-0.5 cursor-pointer">
+                    &nbsp;Login
+                  </button>
+                </Link>
               </p>
             </form>
           </div>

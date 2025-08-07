@@ -8,8 +8,8 @@ import NavItem from "../navItem/NavItem";
 function MainNav() {
   return (
     <ul
-      className="flex justify-center items-center gap-6 absolute top-[45%] 
-      } right-[45%] [justify-self:anchor-center] pl-[2rem]"
+      className="flex justify-center items-center gap-6 absolute top-[45%]
+      } right-[50%] [justify-self:anchor-center] pl-7"
     >
       <NavItem
         title="hotel"
@@ -19,17 +19,17 @@ function MainNav() {
       <NavItem
         title="villa"
         icon={<IoHomeSharp size={24} color="white" />}
-        to="/"
+        to="/villa"
       />
       <NavItem
         title="taxi"
         icon={<MdLocalTaxi size={24} color="white" />}
-        to="/"
+        to="/test"
       />
       <NavItem
         title="flights"
         icon={<GiAirplaneDeparture size={24} color="white" />}
-        to="/bookingReview"
+        to="/flights"
       />
     </ul>
   );

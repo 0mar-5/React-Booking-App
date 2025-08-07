@@ -7,7 +7,7 @@ function SearchBar({ width, isCollapsed }) {
   const dispatch = useDispatch();
   const navigate = useNavigate();
   const [query, setQuery] = useState("");
-  const [country, setCountry] = useState("EG");
+  const [country, setCountry] = useState("");
 
   const handleSearch = () => {
     if (!query && !country) return;
@@ -55,6 +55,7 @@ function SearchBar({ width, isCollapsed }) {
           onChange={(e) => setCountry(e.target.value)}
           className="mt-1 bg-gray-100 rounded-lg px-4 py-2 text-gray-800 text-sm font-semibold focus:outline-none focus:ring-2 focus:ring-blue-500 w-full"
         >
+          <option value="">select a country</option>
           <option value="EG">Egypt</option>
           <option value="MA">Morocco</option>
           <option value="GR">Greece</option>

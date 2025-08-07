@@ -13,7 +13,7 @@ function BookingReview() {
       <Navbar />
 
       <div
-        className={`m-0auto ${
+        className={`m-0auto relative z-50 ${
           !isCollapsed ? "w-[68%]" : "w-[78%]"
         } min-h-screen flex items-start justify-end p-6 mt-[5%]`}
       >

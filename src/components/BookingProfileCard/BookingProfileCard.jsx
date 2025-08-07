@@ -34,17 +34,17 @@ function BookingProfileCard({ booking }) {
         </div>
         <div className="flex">
           <p className=" py-1 font-[11px] text-[#858595]">
-            from: {booking?.checkIn}
+            from: {booking?.checkIn}&nbsp;
           </p>
           <p className=" py-1  font-[11px] text-[#858595]">
             To: {booking?.checkOut}
           </p>
         </div>
-        <div className="flex items-end gap-1">
+        <div className="flex items-end gap-1 text-gray-800">
           <p className="text-sm  pl-1 font-medium">
             Nights: {booking?.nights} ,
           </p>
-          <p className="text-[18px] font-bold text-gray-800 leading-none">
+          <p className="text-[18px] font-bold  leading-none text-blue-700">
             Total price : ${booking?.totalPrice}
           </p>
         </div>

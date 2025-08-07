@@ -2,15 +2,17 @@ import { NavLink } from "react-router-dom";
 
 function NavItem({ icon, title, to }) {
   return (
-    <li className="flex flex-col items-center gap-1 p-2 rounded hover:bg-white/20  cursor-pointer transition-colors">
-      <NavLink
-        to={to}
-        className="text-white text-sm flex flex-col align-middle gap-0.5 "
-      >
-        <span>{icon}</span>
-        {title}
-      </NavLink>
-    </li>
+    <NavLink
+      to={to}
+      className={({ isActive }) =>
+        `flex flex-col items-center gap-1 p-2 rounded transition-colors ${
+          isActive ? "bg-white/20 text-white" : "text-white hover:bg-white/10"
+        }`
+      }
+    >
+      <span>{icon}</span>
+      <span className="text-sm">{title}</span>
+    </NavLink>
   );
 }
 

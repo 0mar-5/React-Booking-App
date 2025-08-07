@@ -11,26 +11,28 @@ function Navbar() {
   const isCollapsed = useSelector((state) => state.sidebar.isCollapsed);
 
   return (
-    <header
-      className={` w-full bg-cover bg-center relative mb-[7%] ${
-        isLoggedIn
-          ? "bg-[url('/Small-bg.png')] h-40"
-          : "bg-[url('/HeaderBG.svg')] h-80"
-      }`}
-    >
-      <div className="container-custom">
-        <div className="flex justify-between pt-8">
-          <SidebarComponent />
-          {isLoggedIn ? <UserNav /> : <NavLogin />}
-          <MainNav />
+    <>
+      <header
+        className={` w-full bg-cover bg-center relative mb-[7%] ${
+          isLoggedIn
+            ? "bg-[url('/Small-bg.png')] h-40"
+            : "bg-[url('/HeaderBG.svg')] h-80"
+        }`}
+      >
+        <div className="container-custom">
+          <div className="flex justify-between pt-8">
+            <SidebarComponent />
+            {isLoggedIn ? <UserNav /> : <NavLogin />}
+            <MainNav />
+          </div>
         </div>
-      </div>
-      <SearchBar
-        width={isCollapsed ? "w-[75%]" : "w-[65%]"}
-        isCollapsed={isCollapsed}
-      />
+        <SearchBar
+          width={isCollapsed ? "w-[75%]" : "w-[65%]"}
+          isCollapsed={isCollapsed}
+        />
+      </header>
       <QuickNavigation width={isCollapsed ? "w-[75%]" : "w-[65%]"} />
-    </header>
+    </>
   );
 }
 

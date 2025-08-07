@@ -27,7 +27,7 @@ function Recommended() {
           container.scrollTo({ left: 0, behavior: "smooth" });
         }
       }
-    }, 3000);
+    }, 2000);
 
     return () => clearInterval(interval);
   }, []);
@@ -39,7 +39,7 @@ function Recommended() {
       </h2>
 
       <div
-        className=" mx-auto overflow-x-auto scrollbar-hide pb-4"
+        className=" mx-auto overflow-x-auto hide-scrollbar pb-4 relative z-10"
         ref={scrollRef}
       >
         <div className="flex gap-6 w-max transition-transform duration-500 ease-in-out">

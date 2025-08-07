@@ -3,8 +3,8 @@ import { Link } from "react-router-dom";
 function RecommendedCard({ recHotel }) {
   return (
     <div className="max-w-md mx-auto">
-      <div className="flex bg-white rounded-2xl shadow-xl p-4 md:p-6 items-center gap-4">
-        <Link to={`/hotelDetails/${recHotel.id}`}>
+      <div className="flex bg-white rounded-2xl shadow-2xs p-4 md:p-6 items-center gap-4">
+        <Link to={`./hotelDetails/${recHotel?.id}`}>
           <img
             src={recHotel?.images?.main}
             alt="Hotel"

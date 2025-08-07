@@ -98,7 +98,7 @@ function Login() {
                   to="/signup"
                   className="font-medium text-indigo-600 hover:text-indigo-500"
                 >
-                  Register here
+                  &nbsp;Register here
                 </Link>
               </p>
             </div>

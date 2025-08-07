@@ -12,23 +12,23 @@ import {
   MdLocalLaundryService,
   MdBalcony,
   MdEco,
+  MdOutlineCasino,
+  MdBathroom,
 } from "react-icons/md";
-import {
-  GiMusicalNotes,
-  GiSkiBoot,
-  GiMountainCave,
-  GiCctvCamera,
-} from "react-icons/gi";
+import { GiMusicalNotes, GiSkiBoot, GiCctvCamera } from "react-icons/gi";
 import { IoIosRestaurant, IoIosBusiness } from "react-icons/io";
-import { TbBeach, TbView360, TbBuildingStore } from "react-icons/tb";
+import { TbBeach, TbBuildingStore } from "react-icons/tb";
 import { MdOutlineSportsTennis } from "react-icons/md";
 import { MdTableRestaurant } from "react-icons/md";
 import { GiSurfBoard } from "react-icons/gi";
 import { MdPool } from "react-icons/md";
 import { BiSolidSlideshow } from "react-icons/bi";
+import { LiaConciergeBellSolid } from "react-icons/lia";
 
-import { LuMusic } from "react-icons/lu";
+import { LuMusic, LuPyramid } from "react-icons/lu";
 import { IoIosGlobe } from "react-icons/io";
+import { FaWater } from "react-icons/fa6";
+import { IoLibrarySharp } from "react-icons/io5";
 
 function PopularServiceIcons({ amenities }) {
   const amenityIcons = {
@@ -62,6 +62,13 @@ function PopularServiceIcons({ amenities }) {
     "cctv cameras": <GiCctvCamera />,
     "beachfront restaurant": <MdTableRestaurant />,
     "multiple restaurants": <MdTableRestaurant />,
+    "pyramid views": <LuPyramid />,
+    "water park": <FaWater />,
+    library: <IoLibrarySharp />,
+    "attached bathroom": <MdBathroom />,
+
+    concierge: <LiaConciergeBellSolid />,
+    casino: <MdOutlineCasino />,
     pool: <MdPool />,
     shows: <BiSolidSlideshow />,
   };
